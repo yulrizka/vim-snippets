@@ -179,6 +179,9 @@ snippet pn
 # print
 snippet pr
 	fmt.Printf("%${1:s}\n", ${2:var})
+# print line
+snippet pl
+	fmt.Println("${1}")
 # range
 snippet rn
 	range ${0}
@@ -225,13 +228,19 @@ snippet t
 # goroutine named function
 snippet g
 	go ${1:funcName}(${0})
-# goroutine anonymous function 
+# goroutine anonymous function
 snippet ga
 	go func(${1} ${2:type}) {
 		${3:/* code */}
 	}(${0})
 snippet test test function
 	func Test${1:name}(t *testing.T) {
+		${2}
+	}
+	${0}
+snippet rtest test function
+	func Test${1:name}(t *testing.T) {
+		RegisterTestingT(t)
 		${2}
 	}
 	${0}
@@ -242,3 +251,23 @@ snippet bench benchmark function
 		}
 	}
 	${0}
+# gomega to
+snippet to
+	To(${1})${2}
+# gomega expect equal
+snippet ebt
+	Expect(${1:result}).To(BeTrue())${2}
+snippet eeq
+	Expect(${1:result}).To(Equal(${2:expected}))${3}
+snippet neq
+	Expect(${1:result}).NotTo(Equal(${2:expected}))${3}
+snippet enil
+	Expect(${1:result}).Should(BeNil())${2}
+snippet nnil
+	Expect(${1:result}).ShouldNot(BeNil())${2}
+snippet eerr
+	Expect(${1:err}).Should(HaveOccurred())${2}
+snippet nerr
+	Expect(err).Should(Succeed())${1}
+snippet dbnerr
+	Expect(db.Error).Should(Succeed())${1}
