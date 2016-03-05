@@ -165,7 +165,9 @@ snippet mk
 snippet mp
 	map[${1:string}]${0:int}
 # main()
-snippet main
+snippet pmain
+	package main
+
 	func main() {
 		${1}
 	}
@@ -177,7 +179,7 @@ snippet nw
 snippet pn
 	panic("${0:msg}")
 # print
-snippet pr
+snippet pf
 	fmt.Printf("%${1:s}\n", ${2:var})
 # print line
 snippet pl
@@ -271,3 +273,38 @@ snippet nerr
 	Expect(err).Should(Succeed())${1}
 snippet dbnerr
 	Expect(db.Error).Should(Succeed())${1}
+
+# cas auto complte
+snippet ci
+	clog.Info(${1:message})
+snippet cif
+	clog.Infof("${1:message}", ${2})
+snippet cd
+	clog.Debug(${1:message})
+snippet cdf
+	clog.Debugf("${1:message}", ${2})
+snippet ce
+	clog.Error(${1:message})
+snippet cef
+	clog.Errorf("${1:message}", ${2})
+snippet cf
+	clog.Fatal(${1:message})
+snippet cff
+	clog.Fatalf("${1:message}", ${2})
+snippet errl
+	if err != nil {
+		clog.Error(err)
+	}
+	${0}
+
+# test
+snippet terr
+	if err != nil {
+		t.Error(err)
+	}
+	${0}
+snippet terrf
+	if err != nil {
+		t.Errorf("${1}, %s", err)
+	}
+	${0}
