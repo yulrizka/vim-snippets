@@ -308,3 +308,15 @@ snippet terrf
 		t.Errorf("${1}, %s", err)
 	}
 	${0}
+snippet tfatal
+	if err != nil {
+		t.Fatal(err)
+	}
+	${0}
+snippet tfatalf
+	if err != nil {
+		t.Fatalf("${1}, %s", err)
+	}
+	${0}
+		}
+	})
